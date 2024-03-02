@@ -24,11 +24,11 @@ class Personnage(ABC):
 
     def presenter_arme(self):
         if self.arme:
-            print(f"Je suis armé avec {self.arme.nom}, qui fait {self.arme.degats} de dégâts et est une arme à {self.arme.type_arme}.")
+            print(self.nom,f" t'es armé avec {self.arme.nom}, qui fait {self.arme.degats} de dégâts et est une arme à {self.arme.type_arme}.")
 
     def presenter_armure(self):
         if self.armure:
-            print(f"Je porte une armure composée d'un {self.armure.casque}, d'un {self.armure.plastron}, de {self.armure.jambieres} et de {self.armure.bottes}.")
+            print(self.nom,f"tu portes une armure composée d'un {self.armure.casque}, d'un {self.armure.plastron}, de {self.armure.jambieres} et de {self.armure.bottes}.")
 
     def presenter_inventaire(self):
         self.inventaire.lister_objets()
@@ -36,12 +36,13 @@ class Personnage(ABC):
 class Guerrier(Personnage):
     def se_presenter(self):
         super().se_presenter()
-        print(f"Je suis {self.nom}, le guerrier.")
-
+        self.nom=input('Le Nom du Guerrier est :')
+        return self.nom
 class Champion(Personnage):
     def se_presenter(self):
         super().se_presenter()
-        print(f"Je suis {self.nom}, le champion.")
+        self.nom=input('Le Nom du champion est :')
+        return self.nom
 
 class Arme:
     def __init__(self, nom, degats, type_arme):
@@ -64,39 +65,42 @@ class Inventaire:
         self.objets.append(objet)
 
     def lister_objets(self):
-        print("Objets dans l'inventaire:")
+        print("Objets dans ton inventaire:")
         for objet in self.objets:
             print(f"- {objet.nom}")
 
 
-guerrier = Guerrier("Nabil")
+guerrier = Guerrier(Personnage)
 guerrier.arme = Arme("épée longue du XIII e siècle", 150, "deux mains")
 guerrier.armure = Armure("masque de fer", "Plastron en acier", "Jambières en cuir", "Bottes en cuir")
-objet_guerrier = Arme("Dague mystérieuse", 30, "une main")
-guerrier.inventaire.ajouter_objet(objet_guerrier)  # Utilisation correcte de l'inventaire de l'instance 'guerrier'
+objet_guerrier = Arme("Dague mystérieuse 🗡️", 30, "une main")
+guerrier.inventaire.ajouter_objet(objet_guerrier)
 
 
 
-champion = Champion("Sami")
+champion = Champion(Personnage)
 champion.arme = Arme("épée longue du XV e siècle", 500, "deux mains")
 champion.armure = Armure("Casque d'or", "Plastron en acier", "Jambières en cuir", "Bottes en or")
-objet_champion=Arme("Sniper", 200, "deux mains")
-objet_champion1=Arme("pistolet", 100, "une seul  main")
+objet_champion2=Arme("Dague mystérieuse 🗡️", 30, "une seul  main")
+objet_champion=Arme("Sniper ▄︻デ══━一", 200, "deux mains")
+objet_champion1=Arme("pistolet 🔫 ", 100, "une seul  main")
+
 
 champion.inventaire.ajouter_objet(objet_champion)
 champion.inventaire.ajouter_objet(objet_champion1)
+champion.inventaire.ajouter_objet(objet_champion2)
 
 
 
 
-print('Guerrier : ')
+print('Guerrier ⤵️ ')
 guerrier.se_presenter()
 guerrier.presenter_arme()
 guerrier.presenter_armure()
 guerrier.presenter_inventaire()
 
-print("---------------------------------------")
-print('Champion :')
+print("☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️")
+print('Champion ⤵️')
 champion.se_presenter()
 champion.presenter_arme()
 champion.presenter_armure()
