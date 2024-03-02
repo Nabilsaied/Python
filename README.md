@@ -1,2 +1,2 @@
-# Python
+#  Python Orienté Objet
  Python Orienté Objet
