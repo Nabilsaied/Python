@@ -24,7 +24,7 @@ class Personnage(ABC):
 
     def presenter_arme(self):
         if self.arme:
-            print(self.nom,f" t'es armé avec {self.arme.nom}, qui fait {self.arme.degats} de dégâts et est une arme à {self.arme.type_arme}.")
+            print(self.nom,f" t'es armé d'une {self.arme.nom}, qui fait {self.arme.degats} de dégâts et est une arme à {self.arme.type_arme}.")
 
     def presenter_armure(self):
         if self.armure:
